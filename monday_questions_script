@@ -1,0 +1,71 @@
+-- How many actors with the last name 'Wahlberg'
+select last_name
+from actor
+where last_name = 'Wahlberg';
+-- Answer: 2
+
+-- How many payments were made between $3.99 and $5.99
+select count(amount)
+from payment
+where amount > 3.99 and amount < 5.99;
+-- Answer: 3,293
+
+-- What film does the store have the most of?
+select film_id, count(film_id)
+from inventory
+group by film_id
+-- Answer: There are many movies tied at 8
+
+-- How many customers have the last name 'William'?
+select last_name
+from customer
+where last_name = 'William'
+-- Answer: 0
+
+-- What store employee sold the most rentals
+select staff_id, count(staff_id)
+from payment
+group by staff_id
+-- Answer: 2 - 7,304
+
+-- How many distinct names are there
+select count(distinct first_name)
+from customer
+-- Answer: 591
+
+-- What film has the most actors in it
+select film_id, count(film_id)
+from film_actor
+group by film_id
+-- Answer: 508 - 15 actors
+
+-- From store_id 1, how many customers haves a last name ending with 'es'
+select last_name
+from customer
+where last_name like '%es' and store_id = 1
+-- Answer: 13
+
+-- How many payment amounts (4.99, 5.99, etc.) had a number of rentals above 250 for customers with ids between 380 and 430? (use group by and having > 250)
+select customer_id, count(customer_id)
+from payment
+group by customer_id
+-- I couldn't figure this one out.
+
+-- Within the film table, how many rating categories are there? And what rating has the most movies total?
+select rating, count(rating)
+from film
+group by rating
+-- Answer: 5/ PG-13 - 223
+
+
+
+
+
+
+
+
+
+
+
+
+
